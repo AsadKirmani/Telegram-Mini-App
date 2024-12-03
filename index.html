@@ -64,6 +64,7 @@
 
 <body>
     <main>
+        <pre id="user-data"></pre>
         <div align="center">
             <a href="https://ton.org/"><img width="48" src="./assets/tapps.png" alt="logo of telegram web apps"></a>
         </div>
@@ -152,7 +153,16 @@
         Telegram.WebApp.onEvent('themeChanged', function() {
             document.body.setAttribute('style', '--bg-color:' + Telegram.WebApp.backgroundColor);
         });
+    // Check if Telegram Web App API is loaded
+    if (Telegram.WebApp) {
+      // Access initDataUnsafe for user data
+      const userData = Telegram.WebApp.initDataUnsafe;
 
+      // Display the raw user data
+      document.getElementById('user-data').innerText = JSON.stringify(userData, null, 2);
+    } else {
+      alert("Telegram Web App API is not available.");
+    }
     </script>
 
     <!-- Eruda is console for mobile browsers -->
