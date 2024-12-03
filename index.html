@@ -157,7 +157,7 @@
     if (Telegram.WebApp) {
       // Access initDataUnsafe for user data
       const userData = Telegram.WebApp.initDataUnsafe;
-
+      console.log(userData);
       // Display the raw user data
       document.getElementById('user-data').innerText = JSON.stringify(userData, null, 2);
     } else {
